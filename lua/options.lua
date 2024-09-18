@@ -15,3 +15,7 @@ vim.opt.autoindent = true
 vim.opt.tabstop = 8
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 3
+vim.opt.termguicolors = true
