@@ -26,4 +26,9 @@ vim.api.nvim_create_autocmd('VimResized', {
     end,
 })
 
+-- Put the working directory to the directory of the current file when Vim starts
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function() vim.cmd("silent! lcd %:p:h") end
+})
+
 require('config.lazy')
