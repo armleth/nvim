@@ -7,6 +7,7 @@ vim.opt.cursorline = true
 
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
+
 -- Save undo history
 vim.opt.undofile = true
 
