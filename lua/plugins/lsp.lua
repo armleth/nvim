@@ -93,23 +93,13 @@ config = function()
     require('lspconfig').lua_ls.setup({})
     require('lspconfig').jsonls.setup({})
     -- require('lspconfig').tsserver.setup({})
-    local flakePath = '(builtins.getFlake "/home/guillaume/dotfiles")'
-    require('lspconfig').nixd.setup({
+    
+    local lspconfig = require('lspconfig')
+    lspconfig.rust_analyzer.setup {
+        -- Server-specific settings. See `:help lspconfig-setup`
         settings = {
-            nixd = {
-                nixpkgs = {
-                    expr = 'import' .. flakePath .. '.inputs.nixpkgs { }',
-                },
-                options = {
-                    home_manager = {
-                        expr = flakePath .. '.homeConfigurations.guillaume.options',
-                    },
-                    nixos = {
-                        expr = flakePath .. '.nixosConfigurations.xps.options',
-                    },
-                },
-            },
+            ['rust-analyzer'] = {},
         },
-    })
+    }
 end,
 }
