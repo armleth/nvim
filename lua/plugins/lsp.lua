@@ -60,9 +60,9 @@ config = function()
             --  See `:help K` for why this keymap.
             map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-            map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+            map('<leader>e', vim.diagnostic.open_float, 'Show line diagnostics')
 
-            map('<leader>p', vim.lsp.diagnostic.show_line_diagnostics(), 'Show line diagnostics')
+            map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
             -- The following two autocommands are used to highlight references of the
             -- word under your cursor when your cursor rests there for a little while.
