@@ -20,3 +20,19 @@ vim.opt.expandtab = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 3
 vim.opt.termguicolors = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.o.swapfile = false
+
+-- checks if an open file is modified in certain events (it always does this), and reload it automatically
+vim.o.autoread = true
+
+-- Case insensitive for commandline
+vim.opt.ignorecase = true
