@@ -2,6 +2,7 @@ return {
     'tpope/vim-vinegar',
     'lukas-reineke/indent-blankline.nvim',
     'nvim-tree/nvim-web-devicons',
+    'rhysd/vim-clang-format',
 
     { 'numToStr/Comment.nvim', opts = {} },
 
