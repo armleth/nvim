@@ -1,5 +1,6 @@
 return {
     'Mofiqul/vscode.nvim',
+    'tckmn/hotdog.vim',
 
     {
         'sainnhe/gruvbox-material',
