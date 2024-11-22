@@ -283,7 +283,6 @@ return {
             "nvim-tree/nvim-web-devicons"
         } ,
 
-        -- TODO: folding + go on it on load
         config = function ()
             require("aerial").setup({
                 layout = {
@@ -316,6 +315,8 @@ return {
                     preserve_equality = false,
                 },
 
+                manage_folds = true,
+
                 on_attach = function(bufnr)
                     -- Jump forwards/backwards with '{' and '}'
                     vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
@@ -323,7 +324,7 @@ return {
                 end,
             })
 
-            vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+            vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<CR>")
         end
     },
 }
