@@ -97,14 +97,11 @@ return { -- LSP Configuration & Plugins
 
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup {
-                -- on_attach = my_custom_on_attach,
                 capabilities = capabilities,
             }
         end
 
-        -- require('lspconfig').rstcheck.setup({})
-        -- require('lspconfig').typescript_language_server.setup({})
-
+        -- specific case for rust analyzer
         lspconfig.rust_analyzer.setup {
             settings = {
                 ['rust-analyzer'] = {},
