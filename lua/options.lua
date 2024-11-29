@@ -36,3 +36,6 @@ vim.o.autoread = true
 
 -- Case insensitive for commandline
 vim.opt.ignorecase = true
+
+-- folding method
+vim.opt.foldmethod = "manual"
