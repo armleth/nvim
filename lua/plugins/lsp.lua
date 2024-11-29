@@ -91,17 +91,21 @@ config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    -- Enable lua lsp
-    require('lspconfig').lua_ls.setup({})
-    require('lspconfig').jsonls.setup({})
-    require('lspconfig').clangd.setup({})
+    -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+    local lspconfig = require('lspconfig')
+    local servers = { 'lua_ls', 'jsonls', 'clangd', 'ts_ls' }
+
+    for _, lsp in ipairs(servers) do
+        lspconfig[lsp].setup {
+            -- on_attach = my_custom_on_attach,
+            capabilities = capabilities,
+        }
+    end
+
     -- require('lspconfig').rstcheck.setup({})
     -- require('lspconfig').typescript_language_server.setup({})
-    require('lspconfig').ts_ls.setup({})
-    
-    local lspconfig = require('lspconfig')
+
     lspconfig.rust_analyzer.setup {
-        -- Server-specific settings. See `:help lspconfig-setup`
         settings = {
             ['rust-analyzer'] = {},
         },
