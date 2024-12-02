@@ -4,6 +4,7 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
             { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
         },
 
         config = function()
@@ -27,6 +28,9 @@ return {
                     }
                 },
             }
+
+            pcall(require('telescope').load_extension, 'ui-select')
+            pcall(require('telescope').load_extension, 'file_browser')
 
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<Space>ff', builtin.find_files, {})
