@@ -1,6 +1,8 @@
 return {
     'Mofiqul/vscode.nvim',
     'tckmn/hotdog.vim',
+    'olimorris/onedarkpro.nvim',
+    'sainnhe/edge',
 
     {
         'sainnhe/gruvbox-material',
