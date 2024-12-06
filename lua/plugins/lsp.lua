@@ -102,10 +102,10 @@ return { -- LSP Configuration & Plugins
         end
 
         -- specific case for rust analyzer
-        lspconfig.rust_analyzer.setup {
-            settings = {
-                ['rust-analyzer'] = {},
-            },
-        }
+        -- lspconfig.rust_analyzer.setup {
+        --     settings = {
+        --         ['rust-analyzer'] = {},
+        --     },
+        -- }
     end,
 }
