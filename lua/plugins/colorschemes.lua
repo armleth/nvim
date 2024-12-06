@@ -1,6 +1,8 @@
 return {
     'Mofiqul/vscode.nvim',
     'tckmn/hotdog.vim',
+    'olimorris/onedarkpro.nvim',
+    'sainnhe/edge',
 
     {
         'sainnhe/gruvbox-material',
@@ -12,8 +14,8 @@ return {
     },
 
     {
-	"sonph/onehalf",
-	config = function(plugin)
+        "sonph/onehalf",
+        config = function(plugin)
             vim.opt.rtp:append(plugin.dir .. "/vim")
         end,
     },
