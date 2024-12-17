@@ -7,6 +7,13 @@ return {
     { 'numToStr/Comment.nvim', opts = {} },
 
     {
+        'nvim-pack/nvim-spectre',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+    },
+
+    {
         'rmagatti/auto-session',
         lazy = false,
         dependencies = {
