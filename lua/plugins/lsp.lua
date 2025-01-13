@@ -88,7 +88,7 @@ return { -- LSP Configuration & Plugins
 
         -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
         local lspconfig = require('lspconfig')
-        local servers = { 'lua_ls', 'jsonls', 'clangd', 'ts_ls' }
+        local servers = { 'lua_ls', 'jsonls', 'clangd', 'ts_ls', 'nil' }
 
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup {
