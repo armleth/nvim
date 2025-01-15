@@ -162,9 +162,13 @@ return {
         {
             'tpope/vim-fugitive',
 
-            config = function ()
-                vim.keymap.set('n', '<leader>gb', "<cmd>Git blame<CR>")
-            end,
+            keys = {
+                { '<leader>gs', '<cmd>Git<CR>', mode = 'n', desc = 'Git status' },
+                { '<leader>gb', '<cmd>Git blame<cr>', mode = 'n', desc = 'Git blame' },
+                { '<leader>gd', '<cmd>Gdiff<cr>', mode = 'n', desc = 'Git diff' },
+                { '<leader>gy', ':GBrowse!<CR>', mode = { 'n', 'v' }, desc = 'Git yank key' },
+            },
+            dependencies = { 'tpope/vim-rhubarb' },
         },
 
         {
