@@ -88,12 +88,20 @@ return { -- LSP Configuration & Plugins
 
         -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
         local lspconfig = require('lspconfig')
-        local servers = { 'lua_ls', 'jsonls', 'clangd', 'ts_ls', 'nixd' }
+        local servers = { 'lua_ls', 'jsonls', 'ts_ls', 'nixd' }
 
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup {
                 capabilities = capabilities,
             }
         end
+
+        lspconfig.clangd.setup {
+            capabilities = capabilities,
+            filetype = {"c", "cpp", "hh"},
+            init_options = {
+                fallbackFlags = {'--std=c++20'}
+            },
+        }
     end,
 }
