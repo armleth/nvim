@@ -99,44 +99,6 @@ return {
             options = { try_as_border = true },
         },
 
-        -- {
-        --     "folke/noice.nvim",
-        --     event = "VeryLazy",
-        --     opts = {
-        --         -- add any options here
-        --     },
-        --     dependencies = {
-        --         "MunifTanjim/nui.nvim",
-        --         "rcarriga/nvim-notify",
-        --     },
-        --
-        --     config = function ()
-        --         require("noice").setup({
-        --             lsp = {
-        --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        --                 override = {
-        --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-        --                     ["vim.lsp.util.stylize_markdown"] = true,
-        --                     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-        --                 },
-        --             },
-        --             -- you can enable a preset for easier configuration
-        --             presets = {
-        --                 bottom_search = true, -- use a classic bottom cmdline for search
-        --                 command_palette = true, -- position the cmdline and popupmenu together
-        --                 long_message_to_split = true, -- long messages will be sent to a split
-        --                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        --                 lsp_doc_border = false, -- add a border to hover docs and signature help
-        --             },
-        --
-        --             filter = {
-        --                 event = "msg_show",
-        --                 max_width= 20,
-        --             },
-        --         })
-        --     end
-        -- },
-
         {
             -- Extensible UI for Neovim notifications and LSP progress messages.
             'j-hui/fidget.nvim',
@@ -251,70 +213,41 @@ return {
             branch = "harpoon2",
             dependencies = {
                 "nvim-lua/plenary.nvim",
-                'nvim-telescope/telescope.nvim',
             },
 
             config = function ()
                 local harpoon = require("harpoon")
 
-                harpoon:setup({})
+                harpoon:setup({
+                    settings = {
+                        save_on_toggle = true,
+                        sync_on_ui_close = true,
+                    },
+                })
+
+                harpoon:extend({
+                    UI_CREATE = function(cx)
+                        vim.keymap.set("n", "<C-v>", function()
+                            harpoon.ui:select_menu_item({ vsplit = true })
+                        end, { buffer = cx.bufnr })
+
+                        vim.keymap.set("n", "<C-x>", function()
+                            harpoon.ui:select_menu_item({ split = true })
+                        end, { buffer = cx.bufnr })
+
+                        vim.keymap.set("n", "<C-t>", function()
+                            harpoon.ui:select_menu_item({ tabedit = true })
+                        end, { buffer = cx.bufnr })
+                    end,
+                })
 
                 vim.keymap.set("n", "<leader>h", function() harpoon:list():add() end)
+                vim.keymap.set("n", "<leader>jk", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
                 for i = 1, 5 do
                     vim.keymap.set("n", "<leader>" .. i, function() harpoon:list():select(i) end)
                 end
-
-                -- basic telescope configuration
-                local conf = require("telescope.config").values
-                local function toggle_telescope(harpoon_files)
-                    local file_paths = {}
-                    for _, item in ipairs(harpoon_files.items) do
-                        table.insert(file_paths, item.value)
-                    end
-
-                    local make_finder = function()
-                        local paths = {}
-
-                        for _, item in ipairs(harpoon_files.items) do
-                            table.insert(paths, item.value)
-                        end
-
-                        return require("telescope.finders").new_table({
-                            results = paths,
-                        })
-                    end
-
-                    require("telescope.pickers").new({}, {
-                        prompt_title = "Harpoon",
-                        finder = make_finder(),
-                        previewer = conf.file_previewer({}),
-                        sorter = conf.generic_sorter({}),
-
-                        attach_mappings = function(prompt_buffer_number, map)
-                            -- The keymap you need
-                            map("i", "<c-d>", function()
-                                local state = require("telescope.actions.state")
-                                local selected_entry = state.get_selected_entry()
-                                local current_picker = state.get_current_picker(prompt_buffer_number)
-
-                                -- This is the line you need to remove the entry
-                                harpoon:list():remove(selected_entry)
-                                current_picker:refresh(make_finder())
-                            end)
-
-                            return true
-                        end,
-
-                    }):find()
-                end
-
-                vim.keymap.set("n", "<leader>jk", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
-
-                -- Toggle previous & next buffers stored within Harpoon list
-                -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-                -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-            end
+            end,
         },
 
         {
