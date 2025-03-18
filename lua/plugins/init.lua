@@ -6,6 +6,25 @@ return {
     { 'numToStr/Comment.nvim', opts = {} },
 
     {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        opts = {}
+    },
+
+    {
+        'akinsho/toggleterm.nvim',
+        version = '*',
+        opts = {
+            open_mapping = [[<C-\>]],
+            persist_mode = false,
+
+            float_opts = {
+                border = 'curved',
+            },
+        },
+    },
+
+    {
         'nvim-pack/nvim-spectre',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -46,8 +65,8 @@ return {
         config = function()
             require('mini.files').setup({
                 mappings = {
+                    close = 'q',
                     go_in_plus  = 'l',
-                    close = '<Esc>',
                 },
             })
         end,
