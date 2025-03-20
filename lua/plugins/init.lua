@@ -3,9 +3,21 @@ return {
     'nvim-tree/nvim-web-devicons',
     'rhysd/vim-clang-format',
 
+    {
+        "folke/snacks.nvim",
+        opts = {
+            dashboard = {
+                -- your dashboard configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        },
+        lazy = false, -- Ensure it's not lazily loaded
+        priority = 1000, -- Make sure it loads before other UI-related plugins
+    },
+
     { 'numToStr/Comment.nvim', opts = {} },
 
-    -- Highlight todo, notes, etc in comments
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
     { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true, },
