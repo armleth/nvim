@@ -17,7 +17,7 @@ return {
             },
 
             quickfile = { enabled = true },
-            scope = { enabled = true },
+            bigfile = { enabled = true },
         },
 
         lazy = false,
