@@ -8,12 +8,10 @@ return {
                 close = 'q',
                 go_in_plus = 'l',
             },
-        })
 
-        require('mini.indentscope').setup({
-            version = false,
-            options = { try_as_border = true },
-            symbol = "│",
+            options = {
+                use_as_default_explorer = false,
+            },
         })
 
         require('mini.move').setup({
@@ -39,5 +37,5 @@ return {
             verbose = { read = true, write = true, delete = true },
             hooks = { pre = { write = session.close_ephemeral_buffers } },
         })
-    end,
+    end
 }

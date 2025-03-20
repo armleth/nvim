@@ -21,12 +21,18 @@ vim.api.nvim_create_autocmd('VimResized', {
     end,
 })
 
--- Make sure session file is created when necessary
-vim.api.nvim_create_autocmd('VimEnter', {
-    callback = require('session').ensure_session,
-})
-
--- Put the working directory to the directory of the current file at starting
 vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function() vim.cmd("silent! lcd %:p:h") end
+    callback = function()
+        -- Make sure session file is created when necessary
+        require('session').ensure_session()
+
+        -- Put the working directory to the directory of the current file at starting
+        vim.cmd("silent! lcd %:p:h")
+
+        -- Open dashboard when loading a directory
+        local stats = vim.loop.fs_stat(vim.fn.expand('%'))
+        if stats and stats.type == "directory" then
+            require("snacks.dashboard").open()
+        end
+    end
 })

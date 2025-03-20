@@ -1,5 +1,4 @@
 return {
-    'lukas-reineke/indent-blankline.nvim',
     'nvim-tree/nvim-web-devicons',
     'rhysd/vim-clang-format',
 
@@ -10,10 +9,19 @@ return {
                 -- your dashboard configuration comes here
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
-            }
+            },
+
+            indent = {
+                enabled = true,
+                scope = {}
+            },
+
+            quickfile = { enabled = true },
+            scope = { enabled = true },
         },
-        lazy = false, -- Ensure it's not lazily loaded
-        priority = 1000, -- Make sure it loads before other UI-related plugins
+
+        lazy = false,
+        priority = 1000,
     },
 
     { 'numToStr/Comment.nvim', opts = {} },
