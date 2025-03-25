@@ -40,6 +40,7 @@ return {
     end,
 
     keys = {
-        { "<space>ss", "<cmd>mksession!<cr>", desc = "Write session" }
+        { "<space>ss", "<cmd>mksession!<cr>", desc = "[S]ession [S]ave" },
+        -- { "<space>sd", session.delete_all(), desc = "[S]ession [D]elete all" },
     }
 }
