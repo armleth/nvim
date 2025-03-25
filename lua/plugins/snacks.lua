@@ -52,6 +52,7 @@ return {
 
         quickfile = { enabled = true },
         bigfile = { enabled = true },
+        scroll = { enabled = true },
     },
 
     keys = {
