@@ -2,28 +2,6 @@ return {
     'nvim-tree/nvim-web-devicons',
     'rhysd/vim-clang-format',
 
-    {
-        "folke/snacks.nvim",
-        opts = {
-            dashboard = {
-                -- your dashboard configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            },
-
-            indent = {
-                enabled = true,
-                scope = {}
-            },
-
-            quickfile = { enabled = true },
-            bigfile = { enabled = true },
-        },
-
-        lazy = false,
-        priority = 1000,
-    },
-
     { 'numToStr/Comment.nvim', opts = {} },
 
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -77,6 +55,21 @@ return {
                 scope = { show_start = false, show_end = false },
             }
         end
+    },
+
+    {
+        'folke/which-key.nvim',
+        event = 'VimEnter',
+        config = function()
+            require('which-key').setup({
+                notify = false,
+            })
+
+            -- Document existing key chains
+            require('which-key').add({
+                { '<leader>f', group = '[F]elescope' },
+            })
+        end,
     },
 
     {

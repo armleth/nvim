@@ -37,5 +37,9 @@ return {
             verbose = { read = true, write = true, delete = true },
             hooks = { pre = { write = session.close_ephemeral_buffers } },
         })
-    end
+    end,
+
+    keys = {
+        { "<space>ss", "<cmd>mksession!<cr>", desc = "Write session" }
+    }
 }

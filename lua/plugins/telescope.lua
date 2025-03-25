@@ -33,13 +33,13 @@ return {
             pcall(require('telescope').load_extension, 'file_browser')
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<Space>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<Space>fs', builtin.live_grep, {})
-            vim.keymap.set('n', '<Space>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<Space>fc', builtin.colorscheme, {})
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-            vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+            vim.keymap.set('n', '<Space>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+            vim.keymap.set('n', '<Space>fs', builtin.live_grep, { desc = '[S]earch with live grep' })
+            vim.keymap.set('n', '<Space>fb', builtin.buffers, { desc = '[F]ind [B]uffer' })
+            vim.keymap.set('n', '<Space>fc', builtin.colorscheme, { desc = '[F]ind [C]olorscheme' })
+            vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+            vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = '[F]ind current [W]ord' })
+            vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
         end,
     },
 }
