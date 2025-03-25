@@ -32,28 +32,14 @@ return {
         'mrjones2014/smart-splits.nvim',
 
         config = function ()
-            vim.keymap.set('n', '<C-h>', require('smart-splits').resize_left)
-            vim.keymap.set('n', '<C-j>', require('smart-splits').resize_down)
-            vim.keymap.set('n', '<C-k>', require('smart-splits').resize_up)
-            vim.keymap.set('n', '<C-l>', require('smart-splits').resize_right)
-            vim.keymap.set('n', '<C-Up>', require('smart-splits').resize_up)
-            vim.keymap.set('n', '<C-Down>', require('smart-splits').resize_down)
-            vim.keymap.set('n', '<C-Left>', require('smart-splits').resize_left)
-            vim.keymap.set('n', '<C-Right>', require('smart-splits').resize_right)
-        end
-    },
-
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        main = 'ibl',
-        opts = function ()
-            return {
-                indent = {
-                    char = "│",
-                    tab_char = "│",
-                },
-                scope = { show_start = false, show_end = false },
-            }
+            vim.keymap.set('n', '<C-h>', require('smart-splits').resize_left, { desc = "Resize split left" })
+            vim.keymap.set('n', '<C-j>', require('smart-splits').resize_down, { desc = "Resize split down" })
+            vim.keymap.set('n', '<C-k>', require('smart-splits').resize_up, { desc = "Resize split up" })
+            vim.keymap.set('n', '<C-l>', require('smart-splits').resize_right, { desc = "Resize split right" })
+            vim.keymap.set('n', '<C-Up>', require('smart-splits').resize_up, { desc = "Resize split up" })
+            vim.keymap.set('n', '<C-Down>', require('smart-splits').resize_down, { desc = "Resize split down" })
+            vim.keymap.set('n', '<C-Left>', require('smart-splits').resize_left, { desc = "Resize split left" })
+            vim.keymap.set('n', '<C-Right>', require('smart-splits').resize_right, { desc = "Resize split right" })
         end
     },
 
@@ -67,7 +53,10 @@ return {
 
             -- Document existing key chains
             require('which-key').add({
+                { '<leader>d', group = '[D]ashboard' },
                 { '<leader>f', group = '[F]elescope' },
+                { '<leader>g', group = '[G]it' },
+                { '<leader>s', group = '[S]ession management' },
             })
         end,
     },
@@ -99,13 +88,13 @@ return {
 
     {
         'tpope/vim-fugitive',
+        dependencies = { 'tpope/vim-rhubarb' },
 
         keys = {
-            { '<leader>gs', '<cmd>Git<CR>', mode = 'n', desc = 'Git status' },
-            { '<leader>gb', '<cmd>Git blame<cr>', mode = 'n', desc = 'Git blame' },
-            { '<leader>gd', '<cmd>Gdiff<cr>', mode = 'n', desc = 'Git diff' },
-            { '<leader>gy', ':GBrowse!<CR>', mode = { 'n', 'v' }, desc = 'Git yank key' },
+            { '<leader>gs', '<cmd>Git<CR>', mode = 'n', desc = '[G]it [S]tatus' },
+            { '<leader>gb', '<cmd>Git blame<cr>', mode = 'n', desc = '[G]it [B]lame' },
+            { '<leader>gd', '<cmd>Gdiff<cr>', mode = 'n', desc = '[G]it [D]iff' },
+            { '<leader>gy', ':GBrowse!<CR>', mode = { 'n', 'v' }, desc = '[G]it [Y]ank key' },
         },
-        dependencies = { 'tpope/vim-rhubarb' },
     },
 }

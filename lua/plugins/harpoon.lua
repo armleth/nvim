@@ -31,8 +31,8 @@ return {
             end,
         })
 
-        vim.keymap.set("n", "<leader>h", function() harpoon:list():add() end)
-        vim.keymap.set("n", "<leader>jk", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+        vim.keymap.set("n", "<leader>h", function() harpoon:list():add() end, { desc = "Add current buffer to harpoon" })
+        vim.keymap.set("n", "<leader>jk", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Toggle harpoon list" })
 
         for i = 1, 5 do
             vim.keymap.set("n", "<leader>" .. i, function() harpoon:list():select(i) end)
