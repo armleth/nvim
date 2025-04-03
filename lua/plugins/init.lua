@@ -1,6 +1,7 @@
 return {
 	"nvim-tree/nvim-web-devicons",
 	"rhysd/vim-clang-format",
+	"github/copilot.vim",
 
 	{ "numToStr/Comment.nvim", opts = {} },
 
