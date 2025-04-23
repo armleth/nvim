@@ -7,10 +7,10 @@ return {
                     { icon = " ", key = "f", desc = "Find File", action = ":ene | lua Snacks.dashboard.pick('files')" },
                     { icon = " ", key = "-", desc = "Explorer", action = ":ene | lua MiniFiles.open()" },
                     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                    { icon = " ", key = "g", desc = "Find Text", action = ":ene | lua Snacks.dashboard.pick('live_grep')" },
+                    { icon = " ", key = "s", desc = "Find Text", action = ":ene | lua Snacks.dashboard.pick('live_grep')" },
                     { icon = " ", key = "r", desc = "Recent Files", action = ":ene | lua Snacks.dashboard.pick('oldfiles')" },
                     { icon = " ", key = "c", desc = "Config", action = ":ene | lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                    { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                    { icon = " ", key = "e", desc = "Restore Session", section = "session" },
                     { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":ene | Lazy", enabled = package.loaded.lazy ~= nil },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 }
