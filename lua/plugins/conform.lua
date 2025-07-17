@@ -9,7 +9,8 @@ return {
                 python = { "black" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
-                -- nix = { "nixfmt" },
+                nix = { "nixfmt" },
+                tex = { "tex-fmt" },
 
                 -- Conform will run the first available formatter
                 javascript = { "prettierd", "prettier", stop_after_first = true },

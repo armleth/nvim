@@ -12,6 +12,17 @@ return {
         opts = { signs = false },
     },
 
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+
+        -- For blink.cmp's completion
+        -- source
+        -- dependencies = {
+        --     "saghen/blink.cmp"
+        -- },
+    },
+
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
     {
