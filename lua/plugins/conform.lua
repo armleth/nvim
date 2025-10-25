@@ -11,14 +11,27 @@ return {
                 cpp = { "clang_format" },
                 nix = { "nixfmt" },
                 tex = { "tex-fmt" },
+                sql = { "sqlfluff" },
+                verilog = { "verible" },
 
                 -- Conform will run the first available formatter
                 javascript = { "prettierd", "prettier", stop_after_first = true },
+
             },
             format_on_save = {
                 -- These options will be passed to conform.format()
                 -- timeout_ms = 0,
                 lsp_format = "fallback",
+            },
+            formatters = {
+                sqlfluff = {
+                    command = "sqlfluff",
+                    args = { "format", "--dialect=postgres", "-" },
+                    stdin = true,
+                    cwd = function()
+                        return vim.fn.getcwd()
+                    end,
+                },
             },
         })
     end,

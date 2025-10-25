@@ -20,6 +20,7 @@ return { -- Autocompletion
         -- Adds other completion capabilities.
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
 
         'ryo33/nvim-cmp-rust',
     },
@@ -100,6 +101,7 @@ return { -- Autocompletion
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'path' },
+                { name = 'nvim_lsp_signature_help' },
             },
 
             formatting = {
