@@ -24,6 +24,9 @@ return {
                 lsp_format = "fallback",
             },
             formatters = {
+                nixfmt = {
+                    prepend_args = { "--indent", "4" },
+                },
                 sqlfluff = {
                     command = "sqlfluff",
                     args = { "format", "--dialect=postgres", "-" },
