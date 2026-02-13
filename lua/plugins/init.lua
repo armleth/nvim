@@ -12,6 +12,7 @@ return {
     },
 
     {
+        -- TODO: check what we should use between this and render-markdown.nvim
         "OXY2DEV/markview.nvim",
         lazy = false,
     },

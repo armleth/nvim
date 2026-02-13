@@ -7,6 +7,10 @@ return {
 
     opts = {
         instructions_file = "avante.md",
+        behaviour = {
+            auto_apply_diff_after_generation = false,
+            auto_approve_tool_permissions = false,
+        },
         mappings = {
             submit = {
                 normal = "<CR>",
@@ -34,5 +38,12 @@ return {
         "nvim-telescope/telescope.nvim",
         "hrsh7th/nvim-cmp",
         "nvim-tree/nvim-web-devicons",
+        {
+            'MeanderingProgrammer/render-markdown.nvim',
+            opts = {
+                file_types = { "Avante" },
+            },
+            ft = { "Avante" },
+        },
     },
 }
