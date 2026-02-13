@@ -4,9 +4,9 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons"
-    } ,
+    },
 
-    config = function ()
+    config = function()
         require("aerial").setup({
             layout = {
                 -- These control the width of the aerial window.
@@ -47,6 +47,6 @@ return {
             end,
         })
 
-        vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle<CR>")
+        vim.keymap.set("n", "<leader>t", "<cmd>AerialToggle<CR>")
     end
 }
