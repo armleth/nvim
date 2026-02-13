@@ -1,7 +1,6 @@
 return {
     "nvim-tree/nvim-web-devicons",
     "rhysd/vim-clang-format",
-    -- "github/copilot.vim",
 
     { "numToStr/Comment.nvim", opts = {} },
 
@@ -15,29 +14,23 @@ return {
     {
         "OXY2DEV/markview.nvim",
         lazy = false,
-
-        -- For blink.cmp's completion
-        -- source
-        -- dependencies = {
-        --     "saghen/blink.cmp"
-        -- },
     },
 
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
     {
         "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require 'nvim-treesitter.configs'.setup {
-                ensure_installed = { "c", "lua", "javascript", "cpp", "python" },
-                sync_install = false,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-            }
-        end
+        build = ":TSUpdate",
+        main = "nvim-treesitter.configs",
+        opts = {
+            ensure_installed = { "c", "lua", "javascript", "cpp", "python" },
+            sync_install = false,
+            auto_install = true,
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+        },
     },
 
     {
