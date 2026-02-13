@@ -1,9 +1,12 @@
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
+-- Clear search highlight on pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Invert ; and : mappings
-vim.keymap.set({ 'n', 'v' }, ';', ':', { noremap = false })
-vim.keymap.set({ 'n', 'v' }, ':', ';', { noremap = false })
+-- Invert ; and : mappings (noremap=true is the default, required for safe key swapping)
+vim.keymap.set({ 'n', 'v' }, ';', ':')
+vim.keymap.set({ 'n', 'v' }, ':', ';')
 
-vim.keymap.set('n', '-', '<CMD>lua MiniFiles.open(vim.api.nvim_buf_get_name(0)); MiniFiles.reveal_cwd()<CR>', { desc = 'Open MiniFiles' })
+-- Open MiniFiles at the current file's location
+vim.keymap.set('n', '-', function()
+    MiniFiles.open(vim.api.nvim_buf_get_name(0))
+    MiniFiles.reveal_cwd()
+end, { desc = 'Open MiniFiles' })

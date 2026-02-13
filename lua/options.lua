@@ -29,13 +29,16 @@ vim.opt.smartcase = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.o.swapfile = false
+vim.opt.swapfile = false
 
--- checks if an open file is modified in certain events (it always does this), and reload it automatically
-vim.o.autoread = true
+-- Checks if an open file is modified in certain events and reload it automatically
+vim.opt.autoread = true
 
--- Case insensitive for commandline
-vim.opt.ignorecase = true
+-- Set highlight on search
+vim.opt.hlsearch = true
 
--- folding method
+-- Keep signcolumn on by default to prevent layout shift
+vim.opt.signcolumn = 'yes'
+
+-- Folding method
 vim.opt.foldmethod = "manual"
