@@ -8,6 +8,7 @@ return {
     opts = {
         instructions_file = "avante.md",
         behaviour = {
+            -- TODO: updating things in file are not working with these options, tofix
             auto_apply_diff_after_generation = false,
             auto_approve_tool_permissions = false,
         },
@@ -18,8 +19,8 @@ return {
             },
         },
         providers = {
+            -- WARNING: ANTHROPIC_API_KEY should be set in the environment for it to work
             claude = {
-
                 endpoint = "https://api.anthropic.com",
                 model = "claude-opus-4-6",
                 timeout = 30000,
