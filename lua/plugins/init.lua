@@ -70,6 +70,21 @@ return {
                 border = "curved",
             },
         },
+        config = function(_, opts)
+            require("toggleterm").setup(opts)
+
+            -- Enable Vim window navigation in terminal mode
+            vim.keymap.set('t', '<C-w>w', [[<C-\><C-n><C-w>w]], { desc = 'Go to next window' })
+            vim.keymap.set('t', '<C-w><C-w>', [[<C-\><C-n><C-w>w]], { desc = 'Go to next window' })
+            vim.keymap.set('t', '<C-w>h', [[<C-\><C-n><C-w>h]], { desc = 'Go to left window' })
+            vim.keymap.set('t', '<C-w><C-h>', [[<C-\><C-n><C-w>h]], { desc = 'Go to left window' })
+            vim.keymap.set('t', '<C-w>j', [[<C-\><C-n><C-w>j]], { desc = 'Go to down window' })
+            vim.keymap.set('t', '<C-w><C-j>', [[<C-\><C-n><C-w>j]], { desc = 'Go to down window' })
+            vim.keymap.set('t', '<C-w>k', [[<C-\><C-n><C-w>k]], { desc = 'Go to up window' })
+            vim.keymap.set('t', '<C-w><C-k>', [[<C-\><C-n><C-w>k]], { desc = 'Go to up window' })
+            vim.keymap.set('t', '<C-w>l', [[<C-\><C-n><C-w>l]], { desc = 'Go to right window' })
+            vim.keymap.set('t', '<C-w><C-l>', [[<C-\><C-n><C-w>l]], { desc = 'Go to right window' })
+        end,
     },
 
     {
