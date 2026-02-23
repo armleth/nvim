@@ -73,7 +73,6 @@ return {
         config = function(_, opts)
             require("toggleterm").setup(opts)
 
-            -- Enable Vim window navigation in terminal mode
             vim.keymap.set('t', '<C-w>w', [[<C-\><C-n><C-w>w]], { desc = 'Go to next window' })
             vim.keymap.set('t', '<C-w><C-w>', [[<C-\><C-n><C-w>w]], { desc = 'Go to next window' })
             vim.keymap.set('t', '<C-w>h', [[<C-\><C-n><C-w>h]], { desc = 'Go to left window' })
@@ -84,14 +83,23 @@ return {
             vim.keymap.set('t', '<C-w><C-k>', [[<C-\><C-n><C-w>k]], { desc = 'Go to up window' })
             vim.keymap.set('t', '<C-w>l', [[<C-\><C-n><C-w>l]], { desc = 'Go to right window' })
             vim.keymap.set('t', '<C-w><C-l>', [[<C-\><C-n><C-w>l]], { desc = 'Go to right window' })
+            vim.keymap.set('t', '<C-w>q', [[<C-\><C-n><C-w>q]], { desc = 'Close window' })
+            vim.keymap.set('t', '<C-w><C-q>', [[<C-\><C-n><C-w>q]], { desc = 'Close window' })
         end,
     },
 
     {
-        "nvim-pack/nvim-spectre",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+        'MagicDuck/grug-far.nvim',
+        -- Note (lazy loading): grug-far.lua defers all it's requires so it's lazy by default
+        -- additional lazy config to defer loading is not really needed...
+        config = function()
+            -- optional setup call to override plugin options
+            -- alternatively you can set options with vim.g.grug_far = { ... }
+            require('grug-far').setup({
+                -- options, see Configuration section below
+                -- there are no required options atm
+            });
+        end
     },
 
     {

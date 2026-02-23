@@ -39,7 +39,7 @@ vim.g.rustaceanvim = {
                 rustfmt = {
                     extraArgs = {
                         '--config',
-                        'comment_width=120,condense_wildcard_suffixes=false,format_code_in_doc_comments=true,format_macro_bodies=true,hex_literal_case=Upper,imports_granularity=One,normalize_doc_attributes=true,wrap_comments=true,chain_width=1',
+                        'comment_width=120,condense_wildcard_suffixes=false,format_code_in_doc_comments=true,format_macro_bodies=true,hex_literal_case=Upper,imports_granularity=Crate,normalize_doc_attributes=true,wrap_comments=true,chain_width=1',
                     },
                 },
             },
