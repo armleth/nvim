@@ -5,7 +5,7 @@ return { -- LSP Configuration & Plugins
 
         -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
         -- used for completion, annotations and signatures of Neovim apis
-        { "folke/neodev.nvim", opts = {} },
+        { "folke/lazydev.nvim", opts = {} },
         "MunifTanjim/prettier.nvim",
     },
     config = function()
