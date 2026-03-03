@@ -38,6 +38,24 @@ return {
                 preserve_equality = false,
             },
 
+            -- Only show relevant symbol kinds for better performance
+            filter_kind = {
+                "Class",
+                "Constructor",
+                "Enum",
+                "Function",
+                "Interface",
+                "Module",
+                "Method",
+                "Struct",
+                "Trait",
+                "Field",
+                "EnumMember",
+                "Constant",
+            },
+
+            backends = { "treesitter", "lsp", "markdown", "asciidoc", "man" },
+
             manage_folds = true,
 
             on_attach = function(bufnr)

@@ -105,5 +105,31 @@ return { -- LSP Configuration & Plugins
                 fallbackFlags = { "--std=c++20" },
             },
         })
+
+        -- Configure gopls for Go
+        local util = require("lspconfig.util")
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            cmd = { "gopls" },
+            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+            settings = {
+                gopls = {
+                    directoryFilters = {
+                        "-bazel-bin",
+                        "-bazel-out",
+                        "-bazel-testlogs",
+                        "-bazel-mypkg",
+                    },
+                    completeUnimported = true,
+                    usePlaceholders = true,
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+                },
+            },
+        })
     end,
 }

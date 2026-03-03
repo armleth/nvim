@@ -14,7 +14,7 @@ vim.g.rustaceanvim = {
             end
             return vim.g.auto_ra_attach
         end,
-        on_attach = function(client, _)
+        on_attach = function(client, bufnr)
             client.server_capabilities.workspace.didChangeWatchedFiles = {
                 dynamicRegistration = false,
                 relativePatternSupport = false,
@@ -27,6 +27,9 @@ vim.g.rustaceanvim = {
                     vim.cmd('RustAnalyzer reloadSettings')
                 end,
             })
+
+            -- Keymaps
+            vim.keymap.set('n', '<Leader>lre', '<cmd>RustLsp expandMacro<cr>', { buffer = bufnr, desc = 'Expand macro' })
         end,
         default_settings = {
             ['rust-analyzer'] = {

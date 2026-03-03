@@ -16,7 +16,7 @@ return {
                 go = { "goimports", "gofmt" },
 
                 -- Conform will run the first available formatter
-                javascript = { "prettierd", "prettier", stop_after_first = true },
+                -- javascript = { "prettierd", "prettier", stop_after_first = true },
 
             },
             format_on_save = {
