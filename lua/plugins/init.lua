@@ -169,6 +169,34 @@ return {
             { "<leader>gb", "<cmd>Git blame<cr>", mode = "n",          desc = "[G]it [B]lame" },
             { "<leader>gd", "<cmd>Gdiff<cr>",     mode = "n",          desc = "[G]it [D]iff" },
             { "<leader>gy", ":GBrowse!<CR>",      mode = { "n", "v" }, desc = "[G]it [Y]ank key" },
+            {
+                "<leader>gp",
+                function()
+                    -- Extract commit SHA: works in blame buffers and normal buffers
+                    local line = vim.fn.getline(".")
+                    local sha = line:match("^(%x+)") or ""
+                    if #sha < 7 or not sha:match("^%x+$") then
+                        -- Fallback: use git blame for current line
+                        local file = vim.fn.expand("%:p")
+                        local lnum = vim.fn.line(".")
+                        sha = vim.fn.system("git blame -l -L " .. lnum .. "," .. lnum .. " -- " .. vim.fn.shellescape(file)):match("^(%x+)")
+                    end
+                    if not sha or #sha < 7 then
+                        vim.notify("No commit SHA found", vim.log.levels.WARN)
+                        return
+                    end
+                    -- Use gh to find and open the PR for this commit
+                    local result = vim.fn.system("gh pr list --search " .. sha .. " --state merged --json url --limit 1 --jq '.[0].url'")
+                    local url = vim.trim(result)
+                    if url == "" or url == "null" then
+                        vim.notify("No PR found for commit " .. sha:sub(1, 8), vim.log.levels.WARN)
+                        return
+                    end
+                    vim.ui.open(url)
+                end,
+                mode = "n",
+                desc = "[G]it [P]R from commit",
+            },
         },
     },
 }
