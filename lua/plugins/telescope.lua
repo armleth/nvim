@@ -11,8 +11,7 @@ return {
             require('telescope').setup {
                 defaults = {
                     file_ignore_patterns = { "node_modules/.*" },
-                    -- Default configuration for telescope goes here:
-                    -- config_key = value,
+                    spinner_chars = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
                     mappings = {
                         i = {
                             ["<C-h>"] = "which_key"
@@ -35,6 +34,9 @@ return {
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<Space>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
             vim.keymap.set('n', '<Space>fs', builtin.live_grep, { desc = '[S]earch with live grep' })
+            vim.keymap.set('n', '<Space>fS', function()
+                builtin.live_grep({ additional_args = { '--hidden', '--glob', '!.git' } })
+            end, { desc = '[S]earch with live grep (hidden dirs)' })
             vim.keymap.set('n', '<leader>fh', function()
                 builtin.live_grep({
                     search_dirs = {
