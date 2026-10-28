@@ -88,31 +88,20 @@ return { -- LSP Configuration & Plugins
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-        -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-        local lspconfig = require("lspconfig")
-        local servers = { "lua_ls", "jsonls", "ts_ls", "nixd", "pyright" }
-
-        for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup({
-                capabilities = capabilities,
-            })
-        end
-
-        lspconfig.clangd.setup({
+        -- Apply the additional completion capabilities offered by nvim-cmp to every server.
+        -- Per-server defaults (cmd, filetypes, root_dir) come from nvim-lspconfig's lsp/*.lua files.
+        vim.lsp.config("*", {
             capabilities = capabilities,
-            filetype = { "c", "h", "cc", "cpp", "hh" },
+        })
+
+        vim.lsp.config("clangd", {
             init_options = {
                 fallbackFlags = { "--std=c++20" },
             },
         })
 
         -- Configure gopls for Go
-        local util = require("lspconfig.util")
-        lspconfig.gopls.setup({
-            capabilities = capabilities,
-            cmd = { "gopls" },
-            filetypes = { "go", "gomod", "gowork", "gotmpl" },
-            root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+        vim.lsp.config("gopls", {
             settings = {
                 gopls = {
                     directoryFilters = {
@@ -131,5 +120,7 @@ return { -- LSP Configuration & Plugins
                 },
             },
         })
+
+        vim.lsp.enable({ "lua_ls", "jsonls", "ts_ls", "nixd", "pyright", "clangd", "gopls" })
     end,
 }

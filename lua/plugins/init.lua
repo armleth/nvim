@@ -20,18 +20,31 @@ return {
     { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
     {
+        -- Only used for queries and parser information, parsers are installed by ts-install.nvim
         "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        main = "nvim-treesitter.configs",
-        opts = {
-            ensure_installed = { "c", "lua", "javascript", "cpp", "python" },
-            sync_install = false,
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-        },
+        lazy = false,
+        init = function()
+            vim.g.loaded_nvim_treesitter = 1
+        end,
+    },
+
+    {
+        "lewis6991/ts-install.nvim",
+        lazy = false,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("ts-install").setup({
+                ensure_install = { "c", "cpp", "go", "lua", "javascript", "python" },
+                auto_install = true,
+            })
+
+            -- Enable treesitter highlighting for every filetype that has a parser installed
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
+            })
+        end,
     },
 
     {

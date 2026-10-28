@@ -33,6 +33,9 @@ return {
 
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<Space>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+            vim.keymap.set('n', '<Space>fF', function()
+                builtin.find_files({ hidden = true, no_ignore = false })
+            end, { desc = '[F]ind [F]iles (hidden)' })
             vim.keymap.set('n', '<Space>fs', builtin.live_grep, { desc = '[S]earch with live grep' })
             vim.keymap.set('n', '<Space>fS', function()
                 builtin.live_grep({ additional_args = { '--hidden', '--glob', '!.git' } })
