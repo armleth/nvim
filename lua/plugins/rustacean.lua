@@ -21,8 +21,9 @@ vim.g.rustaceanvim = {
             }
 
             vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-                desc = 'Resize splits when resizing the window',
-                pattern = { '*.rs' },
+                desc = 'Reload rust-analyzer settings (picks up the nearest .vscode/settings.json)',
+                group = vim.api.nvim_create_augroup('rust_reload_settings_' .. bufnr, { clear = true }),
+                buffer = bufnr,
                 callback = function()
                     vim.cmd('RustAnalyzer reloadSettings')
                 end,
