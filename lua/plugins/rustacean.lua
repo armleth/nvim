@@ -39,6 +39,9 @@ vim.g.rustaceanvim = {
                     enable = true,
                     refreshSupport = true,
                 },
+                files = {
+                    exclude = { '.direnv' },
+                },
                 -- rustfmt = {
                 --     extraArgs = {
                 --         '--config',
