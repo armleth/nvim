@@ -6,7 +6,6 @@ vim.g.rustaceanvim = {
     -- LSP configuration
     ---@type RustaceanLspClientOpts
     server = {
-        load_vscode_settings = true,
         auto_attach = function(bufnr)
             local bufname = vim.api.nvim_buf_get_name(bufnr)
             if vim.startswith(bufname, 'octo://') or vim.startswith(bufname, 'fugitive://') then
@@ -19,15 +18,6 @@ vim.g.rustaceanvim = {
                 dynamicRegistration = false,
                 relativePatternSupport = false,
             }
-
-            vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-                desc = 'Reload rust-analyzer settings (picks up the nearest .vscode/settings.json)',
-                group = vim.api.nvim_create_augroup('rust_reload_settings_' .. bufnr, { clear = true }),
-                buffer = bufnr,
-                callback = function()
-                    vim.cmd('RustAnalyzer reloadSettings')
-                end,
-            })
 
             -- Keymaps
             vim.keymap.set('n', '<Leader>lre', '<cmd>RustLsp expandMacro<cr>', { buffer = bufnr, desc = 'Expand macro' })
@@ -59,7 +49,7 @@ vim.g.rustaceanvim = {
 return {
     {
         'mrcjkb/rustaceanvim',
-        version = '^6', -- Recommended
+        version = '^9', -- Recommended
         ft = { 'rust' },
     },
 }
